@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3dd7ad3b-1e03-4391-ba0e-05a86ef38ec3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Body-Fat-Estimator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Body-Fat-Estimator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115045/train/events.out.tfevents.1685962245.JOELISPC.32364.0.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115045/validation/events.out.tfevents.1685962248.JOELISPC.32364.1.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115140/train/events.out.tfevents.1685962300.JOELISPC.32364.2.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115140/validation/events.out.tfevents.1685962301.JOELISPC.32364.3.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115208/train/events.out.tfevents.1685962328.JOELISPC.32364.4.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115208/validation/events.out.tfevents.1685962329.JOELISPC.32364.5.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115231/train/events.out.tfevents.1685962351.JOELISPC.32364.6.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-115231/validation/events.out.tfevents.1685962353.JOELISPC.32364.7.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-120305/train/events.out.tfevents.1685962985.JOELISPC.32364.8.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-120305/validation/events.out.tfevents.1685962986.JOELISPC.32364.9.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122407/train/events.out.tfevents.1685964247.JOELISPC.32364.10.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122407/validation/events.out.tfevents.1685964249.JOELISPC.32364.11.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122812/train/events.out.tfevents.1685964492.JOELISPC.32364.12.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122812/validation/events.out.tfevents.1685964493.JOELISPC.32364.13.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122905/train/events.out.tfevents.1685964545.JOELISPC.32364.14.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-122905/validation/events.out.tfevents.1685964546.JOELISPC.32364.15.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-124338/train/events.out.tfevents.1685965418.JOELISPC.32364.16.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-124338/validation/events.out.tfevents.1685965419.JOELISPC.32364.17.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-124850/train/events.out.tfevents.1685965730.JOELISPC.32364.18.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-124850/validation/events.out.tfevents.1685965732.JOELISPC.32364.19.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125104/train/events.out.tfevents.1685965864.JOELISPC.32364.20.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125104/validation/events.out.tfevents.1685965865.JOELISPC.32364.21.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125302/train/events.out.tfevents.1685965982.JOELISPC.32364.22.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125302/validation/events.out.tfevents.1685965984.JOELISPC.32364.23.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125354/train/events.out.tfevents.1685966034.JOELISPC.32364.24.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230605-125354/validation/events.out.tfevents.1685966036.JOELISPC.32364.25.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230609-153505/train/events.out.tfevents.1686321305.JOELISPC.29064.0.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/fit/20230609-153505/validation/events.out.tfevents.1686321306.JOELISPC.29064.1.v2" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Sn2h9PCT1y23Tcwg8yDS9HfoCJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "cidr.known.project.marker": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3dd7ad3b-1e03-4391-ba0e-05a86ef38ec3" name="Changes" comment="" />
+      <created>1689768142354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689768142354</updated>
+      <workItem from="1689770439836" duration="625000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
