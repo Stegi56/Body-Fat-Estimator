@@ -9,23 +9,20 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import android.app.Activity;
-import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.os.Bundle;
+
 import org.tensorflow.lite.Interpreter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-import org.tensorflow.lite.Interpreter;
-
 
 public class MainActivity extends AppCompatActivity {
     private EditText ankleField;
     private EditText kneeField;
     private EditText thighField;
+    private EditText wristField;
     private EditText bicepField;
     private EditText waistField;
     private EditText forearmField;
@@ -33,14 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText heightField4;
     private EditText chestField;
     private EditText neckField;
-    private EditText ageField;
     private EditText heightField;
     private EditText weightField;
     private TextView percentFat;
 
     private Interpreter tflite;
-    private float[] inputValues;
-    private float output;
+    private float[][] inputValues = new float[1][9];
+    private float[][] outputValues = new float[1][1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         ankleField = findViewById(R.id.ankleField);
         kneeField = findViewById(R.id.kneeField);
         thighField = findViewById(R.id.thighField);
+        wristField = findViewById(R.id.wristField);
         bicepField = findViewById(R.id.bicepField);
         waistField = findViewById(R.id.waistField);
         forearmField = findViewById(R.id.forearmField);
         hipsField = findViewById(R.id.hipsField);
-        heightField4 = findViewById(R.id.heightField4);
+        heightField4 = findViewById(R.id.waistField);
         chestField = findViewById(R.id.chestField);
         neckField = findViewById(R.id.neckField);
-        ageField = findViewById(R.id.ageField);
         heightField = findViewById(R.id.heightField);
         weightField = findViewById(R.id.weightField);
         percentFat = findViewById(R.id.percentFat);
@@ -65,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ankleField.addTextChangedListener(textWatcher);
         kneeField.addTextChangedListener(textWatcher);
         thighField.addTextChangedListener(textWatcher);
+        wristField.addTextChangedListener(textWatcher);
         bicepField.addTextChangedListener(textWatcher);
         waistField.addTextChangedListener(textWatcher);
         forearmField.addTextChangedListener(textWatcher);
@@ -72,12 +69,11 @@ public class MainActivity extends AppCompatActivity {
         heightField4.addTextChangedListener(textWatcher);
         chestField.addTextChangedListener(textWatcher);
         neckField.addTextChangedListener(textWatcher);
-        ageField.addTextChangedListener(textWatcher);
         heightField.addTextChangedListener(textWatcher);
         weightField.addTextChangedListener(textWatcher);
 
         try {
-            tflite = new Interpreter(loadModelFile(getAssets(), "model.tflite"));
+            tflite = new Interpreter(loadModelFile(getAssets(), "BodyFatEstimator.tflite"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,20 +105,42 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void updatePercentFat () {
+        // If at least one input field is empty, don't update
+
+        if (ankleField.getText().toString().isEmpty() ||
+                kneeField.getText().toString().isEmpty() ||
+                thighField.getText().toString().isEmpty() ||
+                wristField.getText().toString().isEmpty() ||
+                bicepField.getText().toString().isEmpty() ||
+                waistField.getText().toString().isEmpty() ||
+                forearmField.getText().toString().isEmpty() ||
+                hipsField.getText().toString().isEmpty() ||
+                heightField4.getText().toString().isEmpty() ||
+                chestField.getText().toString().isEmpty() ||
+                neckField.getText().toString().isEmpty() ||
+                heightField.getText().toString().isEmpty() ||
+                weightField.getText().toString().isEmpty()) {
+            return;
+        }
+
         // kg to lbs + cm to inch
         //(weight * weight) / height
-        inputValues[0] = (((Float.parseFloat(weightField.getText().toString()) / 2.2f) *
+        inputValues[0][0] = (((Float.parseFloat(weightField.getText().toString()) / 2.2f) *
                             (Float.parseFloat(weightField.getText().toString()) / 2.2f))
-                        / (Float.parseFloat(heightField.getText().toString()) * 0.3937f);
-        inputValues[1] = Float.parseFloat(kneeField.getText().toString());
-        // ... and so on for other input fields
+                        / (Float.parseFloat(heightField.getText().toString()) * 0.3937f));
+        inputValues[0][1] = Float.parseFloat(waistField.getText().toString()) / Float.parseFloat(neckField.getText().toString());
+        inputValues[0][2] = Float.parseFloat(bicepField.getText().toString()) / Float.parseFloat(wristField.getText().toString());
+        inputValues[0][3] = Float.parseFloat(waistField.getText().toString());
+        inputValues[0][4] = Float.parseFloat(thighField.getText().toString()) / Float.parseFloat(ankleField.getText().toString());
+        inputValues[0][5] = Float.parseFloat(chestField.getText().toString());
+        inputValues[0][6] = Float.parseFloat(forearmField.getText().toString());
+        inputValues[0][7] = Float.parseFloat(hipsField.getText().toString());
+        inputValues[0][8] = Float.parseFloat(kneeField.getText().toString());
 
-        // Perform inference using the TensorFlow Lite model
+
         tflite.run(inputValues, outputValues);
 
-        // Update the percentFat TextView with the output prediction
-        float estimatedFatPercentage = outputValues[0];
-        percentFat.setText(String.format("%.2f%%", estimatedFatPercentage));
-
+        float estimatedFatPercentage = outputValues[0][0];
+        percentFat.setText(String.format(estimatedFatPercentage + "%"));
     }
 }
