@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/heightField7"
+        android:id="@+id/ankleField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space10" />
 
     <EditText
-        android:id="@+id/weightField8"
+        android:id="@+id/kneeField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space9" />
 
     <EditText
-        android:id="@+id/heightField6"
+        android:id="@+id/thighField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space9" />
 
     <EditText
-        android:id="@+id/weightField7"
+        android:id="@+id/bicepField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space8" />
 
     <EditText
-        android:id="@+id/weightField4"
+        android:id="@+id/waistField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space6" />
 
     <EditText
-        android:id="@+id/weightField5"
+        android:id="@+id/forearmField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space7" />
 
     <EditText
-        android:id="@+id/heightField5"
+        android:id="@+id/hipsField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space7" />
 
     <EditText
-        android:id="@+id/heightField3"
+        android:id="@+id/chestField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space6" />
 
     <EditText
-        android:id="@+id/weightField2"
+        android:id="@+id/neckField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/space5" />
 
     <EditText
-        android:id="@+id/heightField2"
+        android:id="@+id/ageField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -247,8 +247,8 @@
         android:layout_width="0dp"
         android:layout_height="35dp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
-        app:layout_constraintStart_toStartOf="@+id/heightField3"
-        app:layout_constraintTop_toBottomOf="@+id/heightField2" />
+        app:layout_constraintStart_toStartOf="@+id/chestField"
+        app:layout_constraintTop_toBottomOf="@+id/ageField" />
 
     <Space
         android:id="@+id/space6"
@@ -256,7 +256,7 @@
         android:layout_height="35dp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/heightField3"
+        app:layout_constraintStart_toStartOf="@+id/chestField"
         app:layout_constraintTop_toBottomOf="@+id/heightField" />
 
     <Space
@@ -266,7 +266,7 @@
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/heightField3" />
+        app:layout_constraintTop_toBottomOf="@+id/chestField" />
 
     <Space
         android:id="@+id/space8"
@@ -283,7 +283,7 @@
         android:layout_height="35dp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintStart_toEndOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/heightField5" />
+        app:layout_constraintTop_toBottomOf="@+id/hipsField" />
 
     <Space
         android:id="@+id/space10"
@@ -291,7 +291,7 @@
         android:layout_height="35dp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintStart_toEndOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/heightField6" />
+        app:layout_constraintTop_toBottomOf="@+id/thighField" />
 
     <Space
         android:id="@+id/space12"
@@ -299,6 +299,6 @@
         android:layout_height="35dp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintStart_toEndOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/heightField7" />
+        app:layout_constraintTop_toBottomOf="@+id/ankleField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
