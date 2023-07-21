@@ -124,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // kg to lbs + cm to inch
-        //(weight * weight) / height
-        inputValues[0][0] = (((Float.parseFloat(weightField.getText().toString()) / 2.2f) *
-                            (Float.parseFloat(weightField.getText().toString()) / 2.2f))
-                        / (Float.parseFloat(heightField.getText().toString()) * 0.3937f));
+        float weightLbs = Float.parseFloat(weightField.getText().toString()) / 2.2f;
+        float heightInches = Float.parseFloat(heightField.getText().toString()) * 0.3937f;
+        // bmi  = (weight * weight) / height
+        inputValues[0][0] = ((weightLbs * weightLbs) / heightInches);
         inputValues[0][1] = Float.parseFloat(waistField.getText().toString()) / Float.parseFloat(neckField.getText().toString());
         inputValues[0][2] = Float.parseFloat(bicepField.getText().toString()) / Float.parseFloat(wristField.getText().toString());
         inputValues[0][3] = Float.parseFloat(waistField.getText().toString());
@@ -137,10 +137,24 @@ public class MainActivity extends AppCompatActivity {
         inputValues[0][7] = Float.parseFloat(hipsField.getText().toString());
         inputValues[0][8] = Float.parseFloat(kneeField.getText().toString());
 
+        float mean = 19.150793f;
+        float variance = 69.757904f;
 
+        // Normalize the inputValues array
+        for (int i = 0; i < inputValues.length; i++) {
+            for (int j = 0; j < inputValues[i].length; j++) {
+                // Normalize each feature of the input sample
+                inputValues[i][j] = (inputValues[i][j] - mean) / (float) Math.sqrt(variance);
+            }
+        }
+
+        //run inputs into model
         tflite.run(inputValues, outputValues);
-
         float estimatedFatPercentage = outputValues[0][0];
-        percentFat.setText(String.format(estimatedFatPercentage + "%"));
+
+        // Denormalise output (output * variance) + mean
+        //vals taken from model pipeline
+        estimatedFatPercentage = (estimatedFatPercentage * (float)Math.sqrt(variance)) + mean;
+        percentFat.setText(String.format("%.2f", estimatedFatPercentage) + "%");
     }
 }
