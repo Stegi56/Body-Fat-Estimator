@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // kg to lbs + cm to inch
-        float weightLbs = Float.parseFloat(weightField.getText().toString()) / 2.2f;
-        float heightInches = Float.parseFloat(heightField.getText().toString()) * 0.3937f;
+        float weightLbs = Float.parseFloat(weightField.getText().toString()) * 2.2f;
+        float heightInches = Float.parseFloat(heightField.getText().toString()) / 0.3937f;
         // bmi  = (weight * weight) / height
         inputValues[0][0] = ((weightLbs * weightLbs) / heightInches);
         inputValues[0][1] = Float.parseFloat(waistField.getText().toString()) / Float.parseFloat(neckField.getText().toString());
