@@ -215,6 +215,6 @@ public class MainActivity extends AppCompatActivity {
         // Denormalise output (output * variance) + mean
         // vals taken from model pipeline
         estimatedFatPercentage = (estimatedFatPercentage * (float)Math.sqrt(variance)) + mean;
-        percentFat.setText(String.format("%.2f", estimatedFatPercentage) + "%");
+        percentFat.setText(String.format("%.1f", estimatedFatPercentage) + "%");
     }
 }
