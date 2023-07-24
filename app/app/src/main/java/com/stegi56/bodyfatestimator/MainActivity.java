@@ -2,6 +2,8 @@ package com.stegi56.bodyfatestimator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,9 +15,13 @@ import android.content.res.AssetManager;
 
 import org.tensorflow.lite.Interpreter;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Properties;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,12 +43,70 @@ public class MainActivity extends AppCompatActivity {
     private Interpreter tflite;
     private float[][] inputValues = new float[1][9];
     private float[][] outputValues = new float[1][1];
+    private Properties properties = new Properties();
+    private AssetManager assetManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        assetManager = getAssets();
+
+        initialiseFields();
+        loadFields();
+        initialiseListeners();
+
+        try {
+            tflite = new Interpreter(loadModelFile(assetManager, "BodyFatEstimator.tflite"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadFields() {
+        SharedPreferences preferences = getSharedPreferences("fields", Context.MODE_PRIVATE);
+
+        // Load and set the values for each field
+        heightField.setText(preferences.getString("height", ""));
+        weightField.setText(preferences.getString("weight", ""));
+        chestField.setText(preferences.getString("chest", ""));
+        wristField.setText(preferences.getString("wrist", ""));
+        waistField.setText(preferences.getString("waist", ""));
+        forearmField.setText(preferences.getString("forearm", ""));
+        hipsField.setText(preferences.getString("hips", ""));
+        bicepField.setText(preferences.getString("bicep", ""));
+        thighField.setText(preferences.getString("thigh", ""));
+        kneeField.setText(preferences.getString("knee", ""));
+        ankleField.setText(preferences.getString("ankle", ""));
+        neckField.setText(preferences.getString("neck", ""));
+    }
+
+    private void storeFields() {
+        SharedPreferences preferences = getSharedPreferences("fields", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        // Update file fields with app fields
+        editor.putString("height", heightField.getText().toString());
+        editor.putString("weight", weightField.getText().toString());
+        editor.putString("chest", chestField.getText().toString());
+        editor.putString("wrist", wristField.getText().toString());
+        editor.putString("waist", waistField.getText().toString());
+        editor.putString("forearm", forearmField.getText().toString());
+        editor.putString("hips", hipsField.getText().toString());
+        editor.putString("bicep", bicepField.getText().toString());
+        editor.putString("thigh", thighField.getText().toString());
+        editor.putString("knee", kneeField.getText().toString());
+        editor.putString("ankle", ankleField.getText().toString());
+        editor.putString("neck", neckField.getText().toString());
+
+        // Save the changes
+        editor.apply();
+    }
+
+    private void initialiseFields(){
+        // initialise fields
         ankleField = findViewById(R.id.ankleField);
         kneeField = findViewById(R.id.kneeField);
         thighField = findViewById(R.id.thighField);
@@ -57,7 +121,10 @@ public class MainActivity extends AppCompatActivity {
         heightField = findViewById(R.id.heightField);
         weightField = findViewById(R.id.weightField);
         percentFat = findViewById(R.id.percentFat);
+    }
 
+    private void initialiseListeners(){
+        // add listeners to update fat% upon text changes
         ankleField.addTextChangedListener(textWatcher);
         kneeField.addTextChangedListener(textWatcher);
         thighField.addTextChangedListener(textWatcher);
@@ -71,13 +138,6 @@ public class MainActivity extends AppCompatActivity {
         neckField.addTextChangedListener(textWatcher);
         heightField.addTextChangedListener(textWatcher);
         weightField.addTextChangedListener(textWatcher);
-
-        try {
-            tflite = new Interpreter(loadModelFile(getAssets(), "BodyFatEstimator.tflite"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private MappedByteBuffer loadModelFile(AssetManager assets, String modelPath) throws IOException {
@@ -97,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
             updatePercentFat();
+            storeFields();
         }
 
         @Override
@@ -106,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void updatePercentFat () {
         // If at least one input field is empty, don't update
-
         if (ankleField.getText().toString().isEmpty() ||
                 kneeField.getText().toString().isEmpty() ||
                 thighField.getText().toString().isEmpty() ||
@@ -153,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
         float estimatedFatPercentage = outputValues[0][0];
 
         // Denormalise output (output * variance) + mean
-        //vals taken from model pipeline
+        // vals taken from model pipeline
         estimatedFatPercentage = (estimatedFatPercentage * (float)Math.sqrt(variance)) + mean;
         percentFat.setText(String.format("%.2f", estimatedFatPercentage) + "%");
     }
